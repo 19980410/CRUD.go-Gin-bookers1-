@@ -1,0 +1,7 @@
+<h1>編集する</h1>
+
+<form action="/update/{{.book.ID}}" method="POST" name="book">
+    <input type="text" name="title" value="{{.book.Title}}">
+    <input type="text" name="body" value="{{.book.Body}}">
+    <input type="submit">
+</form>

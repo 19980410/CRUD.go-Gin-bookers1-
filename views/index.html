@@ -1,0 +1,40 @@
+    <p>本の一覧</p>
+    <table>
+            <th>タイトル</th>
+            <th>body</th>
+            <th>links</th>
+
+            {{range .books}}
+                <tr>
+                    <td>{{.Title}}</td>
+                    <td>{{.Body}}</td>
+                    <td>
+                        <a href="/book/{{.ID}}">詳細画面</a>
+                        <br>
+                        <a href="/book/{{.ID}}/edit">編集する</a>
+                        <br>
+                        <form method="post" action="/book/{{.ID}}">                            
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="id" value="{{.ID}}">
+                            <input type="submit" value="delete!!">
+                        </form>
+                    </td>
+                </tr>
+            {{end}}
+    </table>
+
+    <hr>
+
+    <form action="/books/" method="POST" name="book">
+        <h3>タイトル</h3>
+        <input type="text" name="title">
+        <h3>感想</h3>
+        <input type="text" name="body">
+        <input type="submit">
+    </form>
+
+    <form method="post" action="/">
+        <input type="text" name="textArea">
+        <input type="hidden" name="_method" value="PUT"> <!-- この1行を追加！ -->
+        <input type="submit" value="delete!!">
+    </form>
